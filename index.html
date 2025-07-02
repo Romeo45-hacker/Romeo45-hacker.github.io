@@ -41,78 +41,62 @@
   <h2>📚 Tutos & Ressources</h2>
 <ul style="list-style: none; padding: 0; font-size: 1.1em;">
   <li>🔐 <a href="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid01FZxSXHkHmGssJYqWLfpqTHYbz7LSkCYwwfhn2S317cjQnNRRGGyxoNeVrRfiemLl%26id%3D61578030028249&show_text=true&width=500" width="500" height="349" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" target="_blank">Comprendre les VPN</a></li>
- <li>🔐 <a href="Un brute force (ou attaque par force brute) est une méthode utilisée en cybersécurité (ou par des hackers) pour deviner un mot de passe ou une clé secrète en essayant toutes les combinaisons possibles, jusqu’à trouver la bonne.💥 Comment ça fonctionne ?
-L’idée est simple :
+  </body>
+<h2>🎯 Missions interactives</h2>
+<div style="max-width: 600px; margin: auto; background-color: #111; padding: 20px; border-radius: 10px; font-size: 1.1em; color: #eee;">
 
-🔁 Essayer automatiquement toutes les combinaisons de mots de passe jusqu’à tomber sur le bon.
+  <!-- Mission 1 -->
+  <div style="margin-bottom: 30px;">
+    <p><strong>Mission 1 – Scanner furtif</strong></p>
+    <p><em>Objectif :</em> Trouver quel service tourne sur le port <strong>8080</strong> d'une machine cible.</p>
+    <p><em>Indice :</em> Utilise : <code>nmap -sS -p 8080 [IP]</code></p>
+    <input type="text" id="reponse1" placeholder="Ta réponse pour Mission 1" style="width: 100%; padding: 8px; font-size: 1em; border-radius: 5px; border: none;">
+    <button onclick="verifierReponse(1)" style="margin-top: 8px; padding: 8px 16px; font-size: 1em; border: none; border-radius: 5px; background-color: #00ff00; color: #000;">Vérifier Mission 1</button>
+    <p id="resultat1" style="margin-top: 10px;"></p>
+  </div>
 
-Par exemple, si tu veux deviner le mot de passe “1234” :
+  <!-- Mission 2 -->
+  <div style="margin-bottom: 30px;">
+    <p><strong>Mission 2 – Hash mystère</strong></p>
+    <p><em>Objectif :</em> Identifier ce que cache ce hash SHA256 :<br><code>5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8</code></p>
+    <input type="text" id="reponse2" placeholder="Ta réponse pour Mission 2" style="width: 100%; padding: 8px; font-size: 1em; border-radius: 5px; border: none;">
+    <button onclick="verifierReponse(2)" style="margin-top: 8px; padding: 8px 16px; font-size: 1em; border: none; border-radius: 5px; background-color: #00ff00; color: #000;">Vérifier Mission 2</button>
+    <p id="resultat2" style="margin-top: 10px;"></p>
+  </div>
 
-Le script va essayer :
+  <!-- Mission 3 -->
+  <div>
+    <p><strong>Mission 3 – Injection simple</strong></p>
+    <p><em>Objectif :</em> Quel est le résultat de cette requête SQL si le champ "username" contient : <code>' OR 1=1 --</code> ?</p>
+    <input type="text" id="reponse3" placeholder="Ta réponse pour Mission 3" style="width: 100%; padding: 8px; font-size: 1em; border-radius: 5px; border: none;">
+    <button onclick="verifierReponse(3)" style="margin-top: 8px; padding: 8px 16px; font-size: 1em; border: none; border-radius: 5px; background-color: #00ff00; color: #000;">Vérifier Mission 3</button>
+    <p id="resultat3" style="margin-top: 10px;"></p>
+  </div>
 
-0000
+</div>
 
-0001
+<script>
+  function verifierReponse(missionNum) {
+    let reponse = document.getElementById(`reponse${missionNum}`).value.trim().toLowerCase();
+    let resultat = document.getElementById(`resultat${missionNum}`);
 
-0002
+    let bonnesReponses = {
+      1: ["http", "http service", "apache", "nginx", "web server"], // Exemple réponses possibles pour port 8080
+      2: ["password"],
+      3: ["connexion réussie", "bypass login", "tous les utilisateurs", "accès admin"]
+    };
 
-...
-
-1234 ✅ → mot de passe trouvé.
-
-🧠 Les types d’attaques par force brute
-1. 🔢 Brute force pur
-Essaye chaque combinaison possible de caractères (lettres, chiffres, symboles).
-
-➡️ Très lent si le mot de passe est long ou complexe.
-
-2. 📖 Dictionnaire
-Utilise un fichier (wordlist) avec des mots de passe courants ou connus, comme :
-
-pgsql
-Copier
-Modifier
-123456
-password
-azerty
-admin
-qwerty
-➡️ Plus rapide que le brute force pur, mais dépend du contenu du dictionnaire.
-
-3. 🧠 Brute force intelligent (hybride)
-Combine des techniques : mots du dictionnaire + variations (ex: admin123, Admin!, etc.)
-
-🛡️ Comment s’en protéger ?
-🔒 Utiliser un mot de passe long et complexe (ex : J3_su1s_Impr3n4bl3!)
-
-⏳ Activer une limite d’essais (ex : 5 essais → compte bloqué)
-
-📲 Utiliser la double authentification (2FA)
-
-🔐 Utiliser un captcha (empêche les robots d’essayer automatiquement)
-
-👨‍💻 Exemple de script bruteforce en Python (simple) :
-python
-Copier
-Modifier
-from itertools import product
-import string
-
-target = "abc"
-chars = string.ascii_lowercase
-
-for length in range(1, 5):
-    for attempt in product(chars, repeat=length):
-        password = ''.join(attempt)
-        print(f"Trying: {password}")
-        if password == target:
-            print(f"Mot de passe trouvé : {password}")
-            exit()
-📌 En résumé :
-🔧 Terme	Description
-Brute force	Essai automatique de toutes les combinaisons
-Objectif	Trouver un mot de passe ou un code
-Risques	Si le mot de passe est faible, il sera trouvé rapidement
-Défense	Long mot de passe + 2FA + anti-bruteforce" target="_blank">Comprendre les Brute Forcer</a></li>
+    if (bonnesReponses[missionNum].includes(reponse)) {
+      resultat.innerHTML = "✅ Bonne réponse ! Bien joué, hacker 💻";
+      resultat.style.color = "#00ff00";
+    } else if (reponse === "") {
+      resultat.innerHTML = "⚠️ Entre ta réponse avant de vérifier.";
+      resultat.style.color = "#ffaa00";
+    } else {
+      resultat.innerHTML = "❌ Mauvaise réponse. Réessaie ou creuse un peu plus...";
+      resultat.style.color = "#ff4444";
+    }
+  }
+</script>
 </body>
 </html>
