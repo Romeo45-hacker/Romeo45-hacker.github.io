@@ -1,63 +1,135 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DarkHub - Hacker Éthique</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    body {
+    /* Reset de base */
+    * {
       margin: 0;
-      background-color: #0d0d0d;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('images/kali-red-sticker.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: #00ff99;
-      font-family: 'Courier New', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
+
     header {
-      background: black;
-      padding: 1em;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
       text-align: center;
+      box-shadow: 0 0 10px #00ff99;
     }
+
     header img {
-      width: 80px;
+      width: 100px;
     }
+
     nav {
-      background: #111;
+      background-color: rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: center;
-      gap: 1em;
-      padding: 0.5em;
+      gap: 15px;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px #00ff99;
     }
+
     nav a {
       color: #00ff99;
       text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background-color 0.3s;
     }
+
+    nav a:hover {
+      background-color: #00ff99;
+      color: #000;
+      border-radius: 5px;
+    }
+
+    main {
+      flex: 1;
+      background-color: rgba(0, 0, 0, 0.75);
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-y: auto;
+    }
+
     section {
-      padding: 2em;
-      border-bottom: 1px solid #222;
+      margin-bottom: 30px;
     }
-    input, textarea, button {
-      background: #111;
+
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      background-color: #111;
       border: 1px solid #00ff99;
       color: #00ff99;
-      padding: 0.5em;
-      margin-top: 0.5em;
-      width: 100%;
+      border-radius: 5px;
     }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #00ff99;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #000;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00cc7a;
+    }
+
     footer {
-      background: #111;
-      padding: 1em;
       text-align: center;
-      font-size: 0.8em;
+      padding: 15px;
+      background-color: rgba(0,0,0,0.85);
+      color: #00ff99;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background-color: #111;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Kali_Linux_2.0_wordmark.svg" alt="Logo Kali">
+    <img src="images/kali-red-sticker.jpg" alt="Logo Kali" />
     <h1>DarkHub</h1>
     <p>Cybersécurité • Hacking Éthique • Apprentissage interactif</p>
   </header>
-  
+
   <nav>
     <a href="#cours">Cours</a>
     <a href="#missions">Missions</a>
@@ -71,59 +143,91 @@
 
   <main>
     <section id="cours">
-      <h2>Cours Brute Force & VPN</h2>
-      <h3>Brute Force</h3>
-      <p>Apprends à utiliser des outils comme Hydra, Medusa et comprendre les attaques par dictionnaire.</p>
-      <h3>VPN</h3>
-      <p>Comprendre le fonctionnement, les usages en hacking éthique et comment en configurer un.</p>
-    </section>
-
-    <section id="missions">
-      <h2>Missions Débutants</h2>
+      <h2>🔐 Cours : Le Brute Force</h2>
+      <p><strong>Définition :</strong><br>Le brute force (ou force brute) est une méthode de piratage utilisée pour deviner un mot de passe ou une clé en testant automatiquement toutes les combinaisons possibles.</p>
+      <h3>🎯 Objectif</h3>
+      <p>Obtenir un accès non autorisé à un service (FTP, SSH, site web) en devinant le mot de passe ou l'identifiant.</p>
+      <h3>⚙️ Outils utilisés</h3>
       <ul>
-        <li>Scanner une IP vulnérable</li>
-        <li>Bruteforce mot de passe</li>
-        <li>Lire un fichier flag</li>
-        <li>Injection de script</li>
+        <li><strong>Hydra</strong> – attaque en ligne contre FTP, SSH, HTTP, etc.</li>
+        <li><strong>John the Ripper</strong> – casse de hash de mots de passe</li>
+        <li><strong>Medusa</strong> – très rapide et supporte de nombreux protocoles</li>
+        <li><strong>Burp Suite</strong> – brute force web (formulaires de login)</li>
+        <li><strong>Crunch</strong> – générateur de mots de passe personnalisés</li>
       </ul>
-      <p>Entrez votre réponse : <input type="text" id="reponse"> <button onclick="verifieIA()">Vérifier avec l'IA</button></p>
-      <p id="feedback"></p>
-    </section>
-
-    <section id="tutos">
-      <h2>Mini tutos</h2>
-      <p>Découvre rapidement comment utiliser Nmap, John, Wireshark et plus.</p>
-    </section>
-
-    <section id="terminal">
-      <h2>Terminal</h2>
-      <textarea rows="6" placeholder="Entre une commande (ex: ping 127.0.0.1)"></textarea><br>
-      <button>Exécuter</button>
-    </section>
-
-    <section id="outils">
-      <h2>Outils essentiels</h2>
+      <h3>🔍 Types d'attaque</h3>
       <ul>
-        <li>Nmap</li>
-        <li>Hydra</li>
-        <li>Wireshark</li>
-        <li>Burp Suite</li>
-        <li>Metasploit</li>
-        <li>John the Ripper</li>
+        <li><strong>Force brute pur :</strong> teste chaque combinaison (ex: aaaa, aaab...)</li>
+        <li><strong>Par dictionnaire :</strong> teste des mots connus (ex: rockyou.txt)</li>
+        <li><strong>Hybride :</strong> dictionnaire + variations (chiffres, majuscules, etc.)</li>
+      </ul>
+      <h3>🧪 Exemple avec Hydra</h3>
+      <pre><code>hydra -l admin -P wordlist.txt ftp://192.168.1.10</code></pre>
+      <p>
+        - <code>-l admin</code> : nom d'utilisateur<br>
+        - <code>-P wordlist.txt</code> : fichier de mots de passe<br>
+        - <code>ftp://192.168.1.10</code> : protocole et IP cible
+      </p>
+      <h3>🔐 Comment se protéger</h3>
+      <ul>
+        <li>Limiter le nombre de tentatives</li>
+        <li>Activer un captcha</li>
+        <li>Utiliser une authentification à deux facteurs (2FA)</li>
+        <li>Détecter les connexions suspectes avec fail2ban ou Suricata</li>
+      </ul>
+      <h3>🧠 Quiz rapide</h3>
+      <p>Quel outil est utilisé pour brute force un service FTP ?</p>
+      <input type="text" id="quiz_bruteforce" />
+      <button onclick="checkBruteForceQuiz()">Vérifier</button>
+      <p id="result_bruteforce"></p>
+      <h3>📥 Ressources utiles</h3>
+      <ul>
+        <li><a href="tools/rockyou.txt" download>Télécharger rockyou.txt</a></li>
+        <li><a href="tools/hydra.zip" download>Hydra (outil)</a></li>
+        <li><a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank">Hydra GitHub</a></li>
       </ul>
     </section>
 
     <section id="vpn">
-      <h2>VPN</h2>
-      <p>Pour sécuriser tes connexions et accéder aux zones sensibles.</p>
-    </section>
+      <h2>🌐 Cours : VPN (Virtual Private Network)</h2>
+      <p><strong>Définition :</strong><br>Un VPN est un tunnel sécurisé entre ton appareil et Internet. Il chiffre tes données et masque ton IP.</p>
 
-    <section id="connexion">
-      <h2>Connexion / Inscription</h2>
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Mot de passe">
-      <button>S'inscrire</button>
-      <button>Se connecter</button>
+      <h3>🔒 Avantages</h3>
+      <ul>
+        <li>Anonymat (IP cachée)</li>
+        <li>Sécurité des connexions</li>
+        <li>Accès à du contenu bloqué</li>
+        <li>Protection dans un contexte de hacking éthique</li>
+      </ul>
+
+      <h3>📶 Protocoles VPN</h3>
+      <ul>
+        <li>OpenVPN (sécurisé, open-source)</li>
+        <li>WireGuard (moderne et rapide)</li>
+        <li>IKEv2/IPSec (mobile)</li>
+        <li>PPTP/L2TP (obsolètes)</li>
+      </ul>
+
+      <h3>💻 Exemple OpenVPN</h3>
+      <pre><code>sudo apt install openvpn
+sudo openvpn --config fichier.ovpn</code></pre>
+
+      <h3>🧪 Test d'IP</h3>
+      <pre><code>curl ifconfig.me</code></pre>
+      <p>Cette commande te montre ton adresse IP publique.</p>
+
+      <h3>🧠 Quiz rapide</h3>
+      <p>Quel protocole VPN est moderne et rapide ?</p>
+      <input type="text" id="quiz_vpn" />
+      <button onclick="checkVPNQuiz()">Vérifier</button>
+      <p id="result_vpn"></p>
+
+      <h3>📥 Ressources utiles</h3>
+      <ul>
+        <li><a href="tools/openvpn.ovpn" download>Exemple de fichier OpenVPN</a></li>
+        <li><a href="https://www.protonvpn.com/fr/" target="_blank">ProtonVPN</a></li>
+        <li><a href="https://www.vpngate.net/" target="_blank">VPNGate (gratuit)</a></li>
+      </ul>
     </section>
 
     <section id="contact">
@@ -133,187 +237,29 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 DarkHub - Version gratuite. <br> Une version Pro avec missions avancées, terminal étendu et VPN intégré est en cours !</p>
+    <p>&copy; 2025 DarkHub - Version gratuite. <br /> Une version Pro avec missions avancées, terminal étendu et VPN intégré est en cours !</p>
   </footer>
 
   <script>
-    function verifieIA() {
-      const reponse = document.getElementById('reponse').value.trim().toLowerCase();
-      let feedback = "";
-      if (reponse.includes("admin") || reponse.includes("flag")) {
-        feedback = "✅ Bonne réponse ! Tu progresses bien."
+    function checkBruteForceQuiz() {
+      const value = document.getElementById("quiz_bruteforce").value.toLowerCase();
+      const result = document.getElementById("result_bruteforce");
+      if (value.includes("hydra")) {
+        result.innerText = "✅ Bonne réponse !";
       } else {
-        feedback = "❌ Incorrect. Essaye encore ou demande un indice."
+        result.innerText = "❌ Mauvaise réponse. Essaye encore.";
       }
-      document.getElementById('feedback').innerText = feedback;
+    }
+
+    function checkVPNQuiz() {
+      const value = document.getElementById("quiz_vpn").value.toLowerCase();
+      const result = document.getElementById("result_vpn");
+      if (value.includes("wireguard")) {
+        result.innerText = "✅ Bonne réponse !";
+      } else {
+        result.innerText = "❌ Mauvaise réponse. Réessaie.";
+      }
     }
   </script>
 </body>
-  <section id="cours">
-  <h2>Cours : Brute Force & VPN</h2>
-
-  <article>
-    <h3>🔐 Brute Force</h3>
-    <p><strong>Définition :</strong> méthode de piratage testant toutes les combinaisons pour trouver un mot de passe ou une clé.</p>
-    <p><strong>Objectif :</strong> accéder à un compte ou service protégé.</p>
-
-    <h4>Outils utilisés :</h4>
-    <ul>
-      <li>Hydra</li>
-      <li>Medusa</li>
-      <li>John the Ripper</li>
-      <li>Burp Suite</li>
-      <li>crunch</li>
-    </ul>
-
-    <h4>Types d'attaque :</h4>
-    <ul>
-      <li>Brute force pur</li>
-      <li>Par dictionnaire (ex: <code>rockyou.txt</code>)</li>
-      <li>Hybride (dictionnaire + variations)</li>
-    </ul>
-
-    <h4>Exemple Hydra :</h4>
-    <pre><code>hydra -l admin -P wordlist.txt ftp://192.168.1.10</code></pre>
-
-    <h4>Protection :</h4>
-    <ul>
-      <li>Captcha</li>
-      <li>Blocage IP après échecs</li>
-      <li>2FA</li>
-    </ul>
-
-    <h4>Quiz :</h4>
-    <p>Quel outil est utilisé pour faire du brute force sur un service FTP ?</p>
-    <input type="text" id="quiz1">
-    <button onclick="checkQuiz1()">Vérifier</button>
-    <p id="quiz1_result"></p>
-  </article>
-
-  <article>
-    <h3>🌐 VPN</h3>
-    <p><strong>Définition :</strong> tunnel sécurisé entre toi et un serveur distant, masquant ton IP et chiffrant tes données.</p>
-
-    <h4>Avantages :</h4>
-    <ul>
-      <li>Anonymat</li>
-      <li>Sécurité</li>
-      <li>Contourne la censure</li>
-    </ul>
-
-    <h4>Protocoles :</h4>
-    <ul>
-      <li>OpenVPN</li>
-      <li>WireGuard</li>
-      <li>IKEv2/IPSec</li>
-      <li>PPTP (obsolète)</li>
-    </ul>
-
-    <h4>Commande de connexion :</h4>
-    <pre><code>sudo openvpn --config monvpn.ovpn</code></pre>
-
-    <h4>Test IP :</h4>
-    <pre><code>curl ifconfig.me</code></pre>
-
-    <h4>Quiz :</h4>
-    <p>Quel protocole VPN est rapide et moderne ?</p>
-    <input type="text" id="quiz2">
-    <button onclick="checkQuiz2()">Vérifier</button>
-    <p id="quiz2_result"></p>
-
-    <h4>Téléchargements :</h4>
-    <a href="tools/rockyou.txt" download>Télécharger wordlist rockyou.txt</a><br>
-    <a href="tools/hydra.zip" download>Télécharger Hydra</a><br>
-    <a href="tools/openvpn.ovpn" download>Télécharger fichier OpenVPN</a>
-  </article>
-</section>
-
-<script>
-  function checkQuiz1() {
-    const answer = document.getElementById("quiz1").value.toLowerCase();
-    document.getElementById("quiz1_result").innerText = 
-      answer.includes("hydra") ? "✅ Bonne réponse !" : "❌ Réessaye.";
-  }
-
-  function checkQuiz2() {
-    const answer = document.getElementById("quiz2").value.toLowerCase();
-    document.getElementById("quiz2_result").innerText = 
-      answer.includes("wireguard") ? "✅ Exact !" : "❌ Mauvaise réponse.";
-  }
-</script>
-</body>
-  <section id="bruteforce">
-  <h2>🔐 Cours : Le Brute Force</h2>
-
-  <p><strong>Définition :</strong><br>
-    Le brute force (ou force brute) est une méthode de piratage utilisée pour deviner un mot de passe ou une clé en testant automatiquement toutes les combinaisons possibles.
-  </p>
-
-  <h3>🎯 Objectif</h3>
-  <p>Obtenir un accès non autorisé à un service (FTP, SSH, site web) en devinant le mot de passe ou l'identifiant.</p>
-
-  <h3>⚙️ Outils utilisés</h3>
-  <ul>
-    <li><strong>Hydra</strong> – attaque en ligne contre FTP, SSH, HTTP, etc.</li>
-    <li><strong>John the Ripper</strong> – casse de hash de mots de passe</li>
-    <li><strong>Medusa</strong> – très rapide et supporte de nombreux protocoles</li>
-    <li><strong>Burp Suite</strong> – brute force web (formulaires de login)</li>
-    <li><strong>Crunch</strong> – générateur de mots de passe personnalisés</li>
-  </ul>
-
-  <h3>🔍 Types d'attaque</h3>
-  <ul>
-    <li><strong>Force brute pur :</strong> teste chaque combinaison (ex: aaaa, aaab...)</li>
-    <li><strong>Par dictionnaire :</strong> teste des mots connus (ex: rockyou.txt)</li>
-    <li><strong>Hybride :</strong> dictionnaire + variations (chiffres, majuscules, etc.)</li>
-  </ul>
-
-  <h3>🧪 Exemple avec Hydra</h3>
-  <pre><code>hydra -l admin -P wordlist.txt ftp://192.168.1.10</code></pre>
-  <p>
-    - <code>-l admin</code> : nom d'utilisateur<br>
-    - <code>-P wordlist.txt</code> : fichier de mots de passe<br>
-    - <code>ftp://192.168.1.10</code> : protocole et IP cible
-  </p>
-
-  <h3>🔐 Comment se protéger</h3>
-  <ul>
-    <li>Limiter le nombre de tentatives</li>
-    <li>Activer un captcha</li>
-    <li>Utiliser une authentification à deux facteurs (2FA)</li>
-    <li>Détecter les connexions suspectes avec fail2ban ou Suricata</li>
-  </ul>
-
-  <h3>🧠 Quiz rapide</h3>
-  <p>Quel outil est utilisé pour brute force un service FTP ?</p>
-  <input type="text" id="quiz_bruteforce">
-  <button onclick="checkBruteForceQuiz()">Vérifier</button>
-  <p id="result_bruteforce"></p>
-
-  <h3>📥 Ressources utiles</h3>
-  <ul>
-    <li><a href="tools/rockyou.txt" download>Télécharger rockyou.txt</a></li>
-    <li><a href="tools/hydra.zip" download>Hydra (outil)</a></li>
-    <li><a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank">Hydra GitHub</a></li>
-  </ul>
-</section>
-
-<script>
-  function checkBruteForceQuiz() {
-    const value = document.getElementById("quiz_bruteforce").value.toLowerCase();
-    const result = document.getElementById("result_bruteforce");
-    if (value.includes("hydra")) {
-      result.innerText = "✅ Bonne réponse !";
-    } else {
-      result.innerText = "❌ Mauvaise réponse. Essaye encore.";
-    }
-  }
-</script>
-  body {
-  background-image: url('images/kali-red-sticker.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
 </html>
